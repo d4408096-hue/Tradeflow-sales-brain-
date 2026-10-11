@@ -88,6 +88,14 @@ the first real call. The founder's own rule #2 is thus enforced in code, not jus
 
 ## 2. Target architecture
 
+> **⚠️ SUPERSEDED 2026-10-11 — see [`docs/ARCHITECTURE.md`](ARCHITECTURE.md) for the authoritative design.**
+> The diagram below assumed the browser was the audio capture device. Once a US carrier with
+> call-media streaming is in play, **audio never touches the browser**: the carrier delivers both
+> tracks digitally to the backend, the browser becomes a pure display surface, and the Android
+> capture problem disappears rather than being mitigated. The plan below is retained for the
+> reasoning/context/provider layers, which are unchanged — and for the `browser_mic` fallback,
+> which still uses this shape.
+
 ```
 ┌─ Android Chrome / PWA (the only thing on screen during a call) ───────────────┐
 │  mic → AudioWorklet → PCM16 16 kHz mono → 80–250 ms chunks                    │
@@ -383,7 +391,8 @@ backend/tests/       (unit + contract + failure drills)
 frontend/            (PWA, served by FastAPI)
 knowledge/           SaadKhaja.md · TradeFlowContext.md   ← BOTH POPULATED 2026-10-11
 scripts/             eval.py · eval_scenarios.yaml · latency_report.py
-docs/                BUILD_PLAN.md · SALES_PLAYBOOK.md · ARCHITECTURE.md
+docs/                ARCHITECTURE.md  ← authoritative system design
+                     BUILD_PLAN.md · SALES_PLAYBOOK.md
                      MARKET_AND_DIALER_VERDICT.md · AUDIO_CAPTURE.md
                      PRIVACY.md · LATENCY.md · EVAL.md
 .env.example         .gitignore
