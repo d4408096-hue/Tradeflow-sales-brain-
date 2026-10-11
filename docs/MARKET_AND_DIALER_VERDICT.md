@@ -201,9 +201,26 @@ the fact — even if not live.
 
 ## 3. Verdict on the trade mix: plumbing may be your worst choice, not your best
 
-You said plumbers first, then electricians, and "mostly high-ticket contractors". There is
-third-party data suggesting **the plumbing-first sequencing is backwards for a missed-call
-product.**
+> **⚠️ CORRECTION — 2026-10-11, after reviewing the real `ProductContext.md`.**
+> The analysis in §3.1–3.3 below was written **before** I knew what TradeFlow actually is. It
+> assumed a cloud product that could serve any size of business, and it recommended
+> HVAC/construction on answer-rate grounds alone. **That recommendation was wrong, and the
+> reasoning was incomplete.**
+>
+> TradeFlow is an **Android app that texts from the owner's own SIM**. It requires one phone, one
+> personal number, the owner personally answering the phone, sideloading an APK, and granting
+> call-log + SMS permissions. It has **no cloud, no dashboard, no multi-user support, and no
+> integrations.**
+>
+> That architecture **cannot serve a multi-truck HVAC or construction company**, no matter how
+> many calls they miss — those businesses have a dispatcher or office manager answering, a phone
+> system, and usually Jobber or ServiceTitan. The product has nothing to offer them and would
+> fail at the first integration question.
+>
+> **The corrected ICP is in §3.4 below.** The answer-rate data in §3.1–3.3 is still valid and
+> still useful — it just applies to a different question than the one I originally used it for.
+> I have left the original text in place rather than quietly deleting it, because the reasoning
+> error is more instructive than the conclusion.
 
 ### 3.1 The data
 
@@ -264,6 +281,42 @@ tell you more than any benchmark, and you need to make those calls anyway.
 
 **Do not change your ICP on the strength of this document.** Change it on the strength of your
 own first 30 calls.
+
+### 3.4 The corrected ICP — the right question was never "who misses calls?"
+
+The product's architecture decides the ICP before any market data does. Four hard gates:
+
+| Gate | Requirement | Excludes |
+| --- | --- | --- |
+| **1. Answers personally** | The owner is the one holding the ringing phone | Anyone with a dispatcher, office manager, or answering service |
+| **2. One phone, own SIM** | The business number *is* a personal mobile | Phone systems, multi-line setups, shared numbers |
+| **3. Android + willing to sideload** | Can grant call-log + SMS permissions | iPhone users; locked-down or managed devices |
+| **4. $599 pays back on job value** | Job values high enough to absorb it | Low-ticket, low-frequency trades |
+
+**So the ICP is: an owner-operator of a solo-to-3-truck trade business with high job values, who
+personally answers a phone he's holding while doing the work.**
+
+That is materially narrower than "plumbers, electricians, high-ticket contractors." The framing
+question is not *"does this trade miss calls?"* — every trade does. It is:
+
+> **"Does this person personally answer their own mobile while their hands are full, and is a
+> single recovered job worth more than $599?"**
+
+Plumbers, electricians, appliance repair, drain/sewer, garage door, locksmith, and small HVAC
+all pass. **Larger mechanical, roofing and general contracting shops often do not** — not
+because they don't miss calls, but because someone else answers the phone and they run dispatch
+software the product cannot talk to.
+
+**And §3.1's benchmark data now reads differently.** The finding that firms with fewer than 5
+technicians book only 24% of calls is *support* for this ICP, not a caution against it: small
+firms are precisely where the phone is answered by the person doing the work. The high plumbing
+answer rate (74%) is most likely explained by *ownership of the phone*, not by plumbing having
+less of a problem — a solo plumber on a call-out still can't pick up.
+
+**Practical sequencing rule:** qualify on the four gates *before* the pitch, not during it.
+"Who answers the phone when you're on a job?" is a perfectly natural second question on a cold
+call, and the answer decides whether the rest of the call is worth having. See
+`docs/SALES_PLAYBOOK.md` §6 for the disqualifiers to use.
 
 ---
 

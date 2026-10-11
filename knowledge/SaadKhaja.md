@@ -690,6 +690,19 @@ absurdly long, feel like an interrogation, and burn the founder's day.
 | **Decision authority** | **Critical** | Home-services owner-operators are usually the decision-maker. If it's a spouse/partner/office manager, §9.3's champion creation applies — but the ask is small enough that a champion can often just decide. |
 | **Budget** | **Mostly inapplicable** | §9.3's budget gate exists to avoid wasting hours on deals that can't fund. At $599, "can this business afford it" is nearly always yes. Asking "what's your budget?" on a sub-$1,000 offer reads as evasive and creates friction that didn't exist. **Recommendation: do not gate on budget; state price plainly when asked, confidently (tonality 3).** |
 
+**Update 2026-10-11 — add a fourth, product-enforced gate ahead of all three.** With the product
+context known, there is a gate that must be passed *before* need is even worth exploring:
+
+> **Gate 0 — FIT.** Does this person personally answer their own mobile while working, on an
+> Android phone they can sideload on, in a trade with job values that pay back $599?
+
+TradeFlow texts from the owner's own SIM on one Android phone. No cloud, no dashboard, no
+multi-user, no integrations. **A prospect with a dispatcher, a phone system, an iPhone, or
+Jobber/Housecall Pro is architecturally outside the ICP** — and §9.3's own logic says disqualify
+rather than pitch. Ask *"who answers the phone when you're on a job?"* early; it is a natural
+question and it decides whether the rest of the call is worth having. Full disqualifier list:
+`docs/SALES_PLAYBOOK.md` §6.
+
 **Corollary — the objection-handling order changes.** §9.3's gate-3 "ammunition" (you told me
 budget was fine) depends on having established budget. For TradeFlow, the equivalent ammunition
 is **need-based**: *"You said missed calls are costing you jobs — so is it the price, or is
@@ -794,17 +807,24 @@ Adapted ladder:
 
 ### 11.7 Gaps that block these adaptations
 
-Two adaptations above are **blocked on facts I do not have**:
-
-1. **§11.2 need-based ammunition** requires knowing what the product actually does on a missed
-   call. Does it text the caller back? Book the job? Notify the owner? Route to an answering
-   service? Unknown.
-2. **§9.5 proof** requires that TradeFlow have proof. Testimonials, case numbers, before/after
-   recovery rates. If none exist, §9.5 explicitly says the belief-break has nothing to stand on —
-   and the coach must instead route to a *demonstration* or a conditional/trial offer, not a claim.
-
-Both are `[UNKNOWN]` in `TradeFlowContext.md`. **Until they are supplied, the coach operates
-with a strong discovery layer and a hollow pitch layer.**
+> **✅ RESOLVED 2026-10-11.** `ProductContext.md` was supplied and
+> `knowledge/TradeFlowContext.md` is now fully populated. The two gaps originally listed here
+> (`[UNKNOWN]` product behaviour and absence of proof) are answered:
+>
+> - **§11.2 need-based ammunition** was not usable because product behaviour was unknown. TradeFlow's
+>   mechanism is: Busy Mode on → call missed → SMS sent from the owner's own SIM → the customer picks
+>   a service from a numbered list → slots are offered → the owner approves the booking. That is now
+>   specific enough to build need-based objection handling on, and the ROI calculator gives the
+>   founder a live value-delta tool to run *with* the prospect.
+> - **§9.5 proof** was blocked because no proof assets exist. Confirmed: **there are none** — no
+>   testimonials, no case studies, no before/after numbers. Per §9.5 the belief-break therefore has
+>   nothing to stand on, so the coach must route to a **live demonstration** (the real app, a real
+>   text, on the call) or to the ROI calculator. **It must never fabricate proof.** The self-demo
+>   outreach motion in `docs/SALES_PLAYBOOK.md` §2 was designed around this constraint.
+>
+> **New gaps have replaced them**, all recorded in `TradeFlowContext.md` §10: carrier A2P filtering
+> risk for automated SMS from a personal number; an undefined refund policy; the undefined scope of
+> "lifetime access"; no update path for a sideloaded APK; and no tested-device list.
 
 ---
 
@@ -883,3 +903,17 @@ tags: failure, mistakes, what goes wrong, anti-pattern
 on real US trade businesses. Almost everything downstream depends on surviving the first 30
 seconds, and this is the one point where the source material's context is most different from
 ours. It should be measured (connect rate, conversation rate, hostility rate), not assumed.
+
+> **Update 2026-10-11 — the recommendation against the old-friend open is now stronger, not
+> weaker.** With the product context known, three things compound: (a) the ICP is an
+> owner-operator who is *physically working when called*, so suspicion is added on top of a
+> channel that is already compromised; (b) TradeFlow is a **non-AI, local-first, no-subscription**
+> tool sold to a privacy-conscious trade, which makes an opener built on engineered ambiguity
+> off-brand before the first sentence; and (c) the product review explicitly forbids telling users
+> to discount security warnings, so the whole call should be built on disclosed truth rather than
+> managed impression. Recommended open is in `docs/SALES_PLAYBOOK.md` §3.
+>
+> **Additional experiment now in play — `docs/SALES_PLAYBOOK.md` §2:** the self-demonstrating
+> outreach motion (call → deliberately miss → follow up with the exact text TradeFlow would send).
+> It converts the ICP's defining trait — unavailability — into the live demo, which is the only
+> proof channel available given that no testimonials or case studies exist.

@@ -225,13 +225,15 @@ Each milestone has a demo and a definition of done. Do not start milestone N+1 w
 
 ### M1 — Knowledge base and one-shot reasoning (your Stage 1)
 
-- [ ] `knowledge/TradeFlowContext.md` — product facts, each line tagged
-      `[VERIFIED]` / `[UNVERIFIED]` / `[UNKNOWN — do not guess]`. The model may only assert
-      VERIFIED lines. **Blocked on founder input** (§6 Q1).
-- [ ] `knowledge/SaadKhaja.md` — principles, situational rules, question types,
-      objection handling, examples, failure modes, source refs, TradeFlow adaptations.
-      **Blocked on source material** (§6 Q2) — we will not attribute invented method to a
-      named expert.
+- [x] **DONE 2026-10-11 —** `knowledge/TradeFlowContext.md` — populated from the founder's
+      `ProductContext.md`. Every fact tagged `[SITE]` / `[APK]` / `[TEST]` / `[NEVER]`. The
+      model may state `[SITE]` and `[APK]` facts only, and `[APK]` facts must be phrased as
+      design intent. §8.2 is the hard-blocked claim list — that becomes the validator's rules.
+- [x] **DONE 2026-10-11 —** `knowledge/SaadKhaja.md` — full extraction from both podcast
+      episodes, tag-indexed for retrieval, with provenance notes, confidence grades,
+      failure modes, and labelled TradeFlow adaptations (§11).
+- [x] **DONE 2026-10-11 —** `docs/SALES_PLAYBOOK.md` — call architecture, the discovery drill,
+      the 14-objection map, tonality cheat-sheet, and the self-demo outreach motion.
 - [ ] Section-routing selector (keyword/tag overlap, top-K) — no vector DB.
 - [ ] `POST /api/suggest` (text in → one suggestion out) + `LLMProvider` + OpenRouter impl.
 - [ ] **Model latency benchmark before committing to a model** (see §5).
@@ -333,18 +335,16 @@ free route**, and say so in the UI rather than discovering it mid-call.
 
 ## 6. Open decisions and missing inputs
 
-**[DECIDE] Q1 — Verified TradeFlow facts.** `TradeFlowContext.md` cannot be written from
-the brief alone. Needed: is $599 current? What are the actual capabilities (missed-call
-recovery mechanism, booking, notifications, integrations — yes/no per item)? Any real
-results or case numbers that may legally be claimed? What must the coach never promise?
-Until supplied, the file ships as `[UNKNOWN — do not guess]` for every claim, which makes
-the coach honest but close to useless.
+**[RESOLVED 2026-10-11] Q1 — Verified TradeFlow facts.** Populated from the founder's
+`ProductContext.md`. Key surprises that reshape the plan: TradeFlow is an **Android-only,
+direct-APK, local-first SMS app** at **$599 one-time / $0 monthly** — **not** a cloud
+product, and **not** AI-powered. It has **no integrations**, and its exported backup is
+**plain text**. Answer to the old open question: no, the coach must never say "AI-powered",
+"encrypted backups", "never double-books", or name any integration.
 
-**[DECIDE] Q2 — Saad Khaja source material.** Either episode links/transcripts, or the
-NotebookLM extraction notes. Without them we can supply a *generic*, clearly-labelled
-principles scaffold (SPIN-style questioning, gap framing, objection taxonomy) that is
-**not** attributed to the named expert, and swap it once real extraction exists. We will not
-invent an expert's methodology.
+**[RESOLVED 2026-10-11] Q2 — Saad Khaja source material.** Both episodes extracted in full
+into `knowledge/SaadKhaja.md`. Provenance caveat recorded: the source credits Alex Hormozi
+on-air twice, and the offer-stack framing is largely a restatement of existing literature.
 
 **[DECIDE] Q3 — Capture path** (§3): **Superseded** — the question is now "which US-numbered
 carrier gives us caller ID, attestation and audio access", not "which audio-capture hack".
@@ -381,9 +381,10 @@ backend/app/
   providers/stt/     (base, deepgram, groq, mock)
 backend/tests/       (unit + contract + failure drills)
 frontend/            (PWA, served by FastAPI)
-knowledge/           SaadKhaja.md · TradeFlowContext.md
+knowledge/           SaadKhaja.md · TradeFlowContext.md   ← BOTH POPULATED 2026-10-11
 scripts/             eval.py · eval_scenarios.yaml · latency_report.py
-docs/                BUILD_PLAN.md · ARCHITECTURE.md · AUDIO_CAPTURE.md
+docs/                BUILD_PLAN.md · SALES_PLAYBOOK.md · ARCHITECTURE.md
+                     MARKET_AND_DIALER_VERDICT.md · AUDIO_CAPTURE.md
                      PRIVACY.md · LATENCY.md · EVAL.md
 .env.example         .gitignore
 ```
