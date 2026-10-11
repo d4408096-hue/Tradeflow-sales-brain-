@@ -175,6 +175,18 @@ difference between "the model was told not to lie" and "the product does not lie
 
 ## 3. The capture decision — choose the path before Stage 3
 
+> **⚠️ SUPERSEDED 2026-10-11 — see [`docs/MARKET_AND_DIALER_VERDICT.md`](MARKET_AND_DIALER_VERDICT.md).**
+> The chosen dialer (Rebtel) cannot carry this project: it shows an Indian caller ID that
+> cannot be changed, its international calls attract C-level STIR/SHAKEN attestation and
+> therefore "Spam Likely" labelling in the US, it has no web/desktop app (which closes off
+> clean tab-audio capture), and it exposes no API or recording.
+>
+> The replacement is a US-numbered **business VoIP or programmable carrier**, and if it
+> supports call-media streaming then the coach can receive a **digital, dual-channel feed of
+> both parties** — which removes the Android capture problem entirely, removes the
+> "who is speaking" risk from v0, and shrinks M3 considerably. The paths below are retained
+> for reference only.
+
 [DECIDE] This is the single highest-leverage open question.
 
 | Path | Setup | Prospect audio | Real-time | Cost | Verdict |
@@ -334,9 +346,16 @@ principles scaffold (SPIN-style questioning, gap framing, objection taxonomy) th
 **not** attributed to the named expert, and swap it once real extraction exists. We will not
 invent an expert's methodology.
 
-**[DECIDE] Q3 — Capture path** (§3): A, B, or start C now?
+**[DECIDE] Q3 — Capture path** (§3): **Superseded** — the question is now "which US-numbered
+carrier gives us caller ID, attestation and audio access", not "which audio-capture hack".
+See `docs/MARKET_AND_DIALER_VERDICT.md` §2.
 
-**[DECIDE] Q4 — Where live integration testing happens.** This development sandbox has
+**[DECIDE] Q4 — Trade mix.** Third-party benchmarks suggest plumbing already answers ~74% of
+calls while HVAC (~34%) and construction (~32%) miss roughly two in three. Plumbing-first may
+be backwards for a missed-call product. Resolve with your own first 30 calls, not with a
+benchmark. See `docs/MARKET_AND_DIALER_VERDICT.md` §3.
+
+**[DECIDE] Q5 — Where live integration testing happens.** This development sandbox has
 egress restricted to GitHub/npm/PyPI only: it *cannot* reach `api.deepgram.com` or
 `openrouter.ai`. So:
 - code, unit tests, UI, and mocked-provider runs happen here (preview works, mock mode works);
@@ -345,7 +364,7 @@ egress restricted to GitHub/npm/PyPI only: it *cannot* reach `api.deepgram.com` 
 A `mock` provider and a visible "provider unreachable" state are therefore required for the
 sandbox preview to be usable — and they double as the offline demo mode.
 
-**[DECIDE] Q5 — Deploy target** (after M3): the ephemeral-token design means we only need
+**[DECIDE] Q6 — Deploy target** (after M3): the ephemeral-token design means we only need
 static file serving + small REST endpoints, so any free tier works; pick whichever you can
 configure secrets on most easily. Runner-up consideration: the host's egress must reach
 `openrouter.ai`.
